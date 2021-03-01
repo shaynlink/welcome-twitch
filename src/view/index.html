@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+        <title>Welcome twitch</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./../static/css/main.css">
+        <link rel="stylesheet" href="./../static/css/all.css">
+    </head>
+    <body>
+        <div class="app">
+            <section class="navbar">
+                <div class="navbar-content">                
+                    <div>
+                        <p>Welcome twitch</p>
+                    </div>
+                    <div>
+                        <button id="decobtn">Déconnection</button>
+                    </div>
+                </div>
+            </section>
+            <section class="main">
+                <div id="lists" class="lists"></div>
+                <div class="nav">
+                    <div id="user" class="user"></div>
+                    <div class="stats">
+                        <div class="stat">
+                            <p>Nb messages:</p>
+                            <p id="nbm">N/A</p>
+                        </div>
+                        <div class="stat">
+                            <p>Nb welcome message:</p>
+                            <p id="nbwm">N/A</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <script>
+            const { ipcRenderer } = require('electron');
+            const lists = document.getElementById('lists');
+            const nbwm = document.getElementById('nbwm');
+            const nbm = document.getElementById('nbm');
+            const _user = document.getElementById('user');
+            const decobtn = document.getElementById('decobtn');
+
+            decobtn.onclick = () => {
+                window.localStorage.removeItem('data');
+                window.localStorage.removeItem('auth');
+                ipcRenderer.send('state', 'RELOAD');
+            };
+
+            ipcRenderer.send('msg');
+
+            const user = JSON.parse(window.localStorage.getItem('data'));
+
+            _user.innerHTML = `<div class="user-img" style="background: url(${user.profile_image_url.replace('300x300', '70x70')}) center center no-repeat;"></div>`;
+            _user.innerHTML += `<p>${user['display_name']}</p>`;
+
+            let nbwmi = 0;
+            let nbmi = 0;
+
+            const added = (str) => {
+                str = String(str);
+
+                return '0'.repeat(2 - str.length) + str;
+            };
+
+            ipcRenderer.on('msg', (channel, message) => {
+                if (message.hasHello) {
+                    const date = new Date();
+                    lists.innerHTML = '<div class="list">' +
+                                `<p><span class="list-date">${added(date.getHours())}:${added(date.getMinutes())}</span> <span style="color:${message.color}">${message.username}:</span> ${message.content}</p>` +
+                            '</div>' + lists.innerHTML;
+                    
+                    nbwm.innerText = nbwmi = nbwmi + 1;
+                };
+
+                nbm.innerText = nbmi = nbmi + 1;
+            });
+        </script>
+    </body>
+</html>

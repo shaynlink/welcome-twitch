@@ -1,0 +1,27 @@
+{
+  "name": "welcometwitch",
+  "version": "1.0.0",
+  "description": "a simple hi message detector on twitch",
+  "main": "index.js",
+  "scripts": {
+    "dev": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "build": "electron-builder build --linux --win"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "express": "^4.17.1",
+    "ws": "^7.4.3"
+  },
+  "devDependencies": {
+    "electron": "^11.3.0",
+    "electron-builder": "^22.9.1"
+  },
+  "build": {
+    "appId": "com.shaynlink.welcometwitch"
+  }
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+        <title>Welcome twitch</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./../static/css/main.css">
+        <link rel="stylesheet" href="./../static/css/all.css">
+        <style>
+            .app {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                row-gap: 1rem;
+            }
+
+            .home-user {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                row-gap: 3px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="app">
+            <div class="home-user">
+                <div id="pp">
+                    <i class="fas fa-user" style="font-size: 4rem;"></i>
+                </div>
+                <p id="username">non connecté</p>
+            </div>
+            <div>
+                <a href="main.html"><button>Lancer l'application</button></a>
+            </div>
+        </div>
+
+        <script>
+            const pp = document.getElementById('pp');
+            const username = document.getElementById('username');
+
+            let user = window.localStorage.getItem('data');
+            if (user) {
+                user = JSON.parse(user);
+    
+                pp.innerHTML = `<div class="user-img" style="background: url(${user.profile_image_url.replace('300x300', '70x70')}) center center no-repeat;"></div>`;
+                username.innerText = user['display_name'];
+            };
+        </script>
+    </body>
+</html>

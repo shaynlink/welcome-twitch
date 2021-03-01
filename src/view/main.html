@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <title>Welcome twitch</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./../static/css/main.css">
+</head>
+<body>
+    <div class="app">
+        <div class="loader">
+            <div class="loader-content">
+                <div class="circle"></div>
+            </div>
+            <div>
+                <h2>Welcome twitch</h2>
+                <p id="message">Chargement de l'application</p>
+            </div>
+            <div>
+                <progress id="pg" value="0" max="8">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const circles = document.getElementsByClassName('circle');
+
+        const emotes = [
+        '╰(*°▽°*)╯', '╰(*°▽°*)╯', 'ಥ_ಥ',
+        '(*/ω＼*)', '( •_•)>⌐■-■', '(❁´◡`❁)',
+        'ಠ_ಠ', '(╯°□°）╯︵ ┻━┻', '(●\'◡\'●)',
+        '☆*: .｡. o', '(≧▽≦)', 'o .｡.:*☆',
+        '(^///^)', ':-)', '^_^',
+        ':-D', 'ᓚᘏᗢ', '(┬┬﹏┬┬)',
+        '( ´･･)ﾉ', '(._.`)', '༼ つ ◕_◕ ༽つ',
+        '(ˉ﹃ˉ)', '(•_•)', ':-(',
+        ':-P', ';-)', '(☞ﾟヮﾟ)☞',
+        '☜(ﾟヮﾟ☜)', '(¬‿¬)', '(¬_¬ )',
+        '¯\_(ツ)_/¯', '(T_T)', '(⊙_⊙;)'];
+
+        for (let i = 0; i < circles.length; i++) {
+            const circle = circles.item(i);
+            circle.innerHTML = emotes[
+                Math.floor(Math.random() * emotes.length)
+            ];
+        };
+    </script>
+    <script src="./../static/js/main.js"></script>
+</body>
+</html>

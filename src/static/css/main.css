@@ -1,0 +1,169 @@
+*, *::after {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    background: #202C33;
+    color: #D6E4DC;
+    height: 100%;
+    width: 100%;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+.app {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.loader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.loader-content {
+    margin: 3rem;
+}
+
+.circle {
+    animation: circle 2.8s linear infinite;
+    font-size: 1.5rem;
+}
+
+.navbar {
+    width: 100%;
+    height: 3rem;
+    background: #27343B;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #a0adb5;
+}
+
+.navbar-content {
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    border: none;
+    padding: 10px;
+    border-radius: 2rem;
+    cursor: pointer;
+    background: #5C6971;
+    color: #D6E4DC;
+}
+
+button:hover {
+    background: #7b8b96;
+    outline: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    position: fixed;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.lists {
+    grid-column: 1 / 4;
+    padding-top: 2rem;
+    padding-left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+    overflow: scroll;
+}
+
+.lists::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #d1d1d1;
+}
+
+.lists::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #6b6b6b;
+}
+
+.lists::-webkit-scrollbar-thumb
+{
+	background-color: #6b6b6b;
+}
+
+.nav {
+    background: #14222B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    row-gap: 4rem;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    row-gap: .5rem;
+}
+
+.user-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.list {
+    padding: 5px;
+    border-bottom: 1px solid #475f6e;
+}
+
+.list-date {
+    font-size: 11px;
+}
+
+.title {
+    font-size: x-large;           
+}
+
+@keyframes circle {
+    0% {
+        transform: rotate(0deg);
+    }
+    
+    100% {
+        transform: rotate(360deg);
+    }
+}
