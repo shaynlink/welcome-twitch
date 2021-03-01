@@ -6,12 +6,11 @@ const process = require('process');
 const express = require('express');
 const http = require('http');
 const childProcess = require('child_process');
-const fs = require('fs');
 const WebSocket = require('ws');
 const axios = require('axios');
 const Util = require('./src/util/util');
-const {resolve, join} = require('path');
-const { response } = require('express');
+const {resolve} = require('path');
+const callback = require('./src/lib/callback');
 
 let window = {setProgressBar: () => {}};
 let message = '1.Chargement du serveur 127.0.0.1:1757';
@@ -55,8 +54,7 @@ router.get('/callback', (req, res) => {
 
     res.setHeader('Content-Type', 'text/html; charset=utf8');
 
-    let cb = fs.readFileSync('./src/lib/callback.html', {encoding: 'utf8'});
-    cb = cb.replace(/{{PORT}}/g, port);
+    let cb = callback.replace(/{{PORT}}/g, port);
 
     return res.status(200).end(cb);
 });
@@ -93,7 +91,7 @@ function createWindow() {
         darkTheme: true,
         titleBarStyle: 'customButtonsOnHover',
         title: 'Welcome Twitch',
-        icon: resolve('welcometwitch.ico'),
+        icon: resolve('build/welcometwitch.ico'),
     });
 
     win.once('ready-to-show', () => {
