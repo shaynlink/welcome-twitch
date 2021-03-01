@@ -31,3 +31,8 @@ npm run dist
 ```
 
 5. Stay enjoy :)
+
+# Preview
+vvvvv It's a youtube video xD vvvv
+
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/B3fK5CcJvjA/0.jpg)](https://www.youtube.com/watch?v=B3fK5CcJvjA "Preview Welcome Twitch")
