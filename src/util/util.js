@@ -7,7 +7,7 @@ class Util {
             'bonsoir', 'salam', 'holla', 'hallo', 'Ohayo',
             'konnichiwa', 'konbanwa', 'ossu', 'hey', 'yo',
             'yosh', 'vohiyo', 'hi', 'yeyguys', 'koncha',
-            'coucou', 'cc'
+            'coucou', 'cc', 'slt', 'bjr', 'wsh', 'bjs'
         ];
     };
 
